@@ -16,4 +16,7 @@ steps:
 # defining variables
 substitutions:
     _IMAGE_VERSION_1: v1.0.0
+options:
+  logging: CLOUD_LOGGING_ONLY
+    
       
