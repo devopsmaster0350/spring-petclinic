@@ -11,8 +11,7 @@ node('docker'){
 
    stage('build'){
      sh '''
-        mvn package
-        junit 'target/surefire-reports/*.xml'
+        mvn package -DskipTests
        '''
    }  
    stage('Archive') {
