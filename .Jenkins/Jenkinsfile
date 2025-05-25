@@ -12,5 +12,8 @@ node('docker'){
    stage('build'){
      sh 'mvn package -DskipTests'
    }  
+   stage('Archive') {
+        archiveArtifacts artifacts: 'target/*.jar', fingerprint: true
+    }
 
 }
