@@ -1,4 +1,16 @@
 node('docker'){
 
+   stage('Clone petclinicRepository') {
+        checkout([$class: 'GitSCM',
+            branches: [[name: '*/jenkins-prep']],
+            userRemoteConfigs: [[
+                url: 'https://github.com/devopsmaster0350/spring-petclinic.git'
+            ]]
+        ])
+   }
+
+   stage('build'){
+     sh 'mvn package -DskipTests'
+   }  
 
 }
