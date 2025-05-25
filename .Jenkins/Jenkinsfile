@@ -10,7 +10,10 @@ node('docker'){
    }
 
    stage('build'){
-     sh 'mvn package -DskipTests'
+     sh '''
+        mvn package
+        junit 'target/surefire-reports/*.xml'
+       '''
    }  
    stage('Archive') {
         archiveArtifacts artifacts: 'target/*.jar', fingerprint: true
